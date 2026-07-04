@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify
+
 from datetime import datetime
 import requests
 import os
+from flask import Flask, request, jsonify, send_from_directory
 
 app = Flask(__name__)
 
@@ -36,7 +37,7 @@ def status():
 
 @app.route('/', methods=['GET'])
 def home():
-    return "kk-server is running"
+    return send_from_directory('static', 'index.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
